@@ -8,6 +8,7 @@ export const EditProfileButton = () => {
     const { inProgress, instance } = useMsal();
 
     const handleProfileEdit = () => {
+        console.log(`isAuthenticated: ${isAuthenticated}, inProgress: ${inProgress}`);
         if (isAuthenticated && inProgress === InteractionStatus.None) {
             instance.acquireTokenRedirect(b2cPolicies.authorities.editProfile);
         }

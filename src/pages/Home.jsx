@@ -1,4 +1,4 @@
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { Link as RouterLink } from "react-router-dom";
 
 import Stack from '@mui/material/Stack';
@@ -11,7 +11,10 @@ import { EditProfileButton } from "../ui-components/EditProfileButton";
 import { TokenClaims } from "../ui-components/TokenClaims";
 
 export function Home(props) {
-  const { instance } = useMsal();
+  const { instance, inProgress } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
+  
+  console.log(`isAuthenticated: ${isAuthenticated}, inProgress: ${inProgress}`);
 
   return (
       <>
@@ -34,6 +37,9 @@ export function Home(props) {
           <UnauthenticatedTemplate>
             <Typography variant="h6">
               <center>Please sign-in to see your profile information.</center>
+              <center>
+                or go to <Button component={RouterLink} to="/page1" variant="contained" color="primary" id="callApiButton">Page 1</Button> to get started.
+              </center>
             </Typography>
           </UnauthenticatedTemplate>
       </>

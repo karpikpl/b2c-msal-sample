@@ -18,24 +18,24 @@ const isFirefox = firefox > 0; // Only needed if you need to support the redirec
  */
  export const b2cPolicies = {
     names: {
-        signUpSignIn: "B2C_1_SISOPolicy",
-        editProfile: "B2C_1_ProfileEditPolicy"
+        signUpSignIn: "B2C_1_SignUp_SignIn",
+        editProfile: "B2C_1_EditProfile"
     },
     authorities: {
         signUpSignIn: {
-            authority: "https://msidlabb2c.b2clogin.com/msidlabb2c.onmicrosoft.com/B2C_1_SISOPolicy"
+            authority: "https://karpalab2c.b2clogin.com/karpalab2c.onmicrosoft.com/B2C_1_SignUp_SignIn"
         },
         editProfile: {
-            authority: "https://msidlabb2c.b2clogin.com/msidlabb2c.onmicrosoft.com/B2C_1_ProfileEditPolicy"
+            authority: "https://karpalab2c.b2clogin.com/karpalab2c.onmicrosoft.com/B2C_1_EditProfile"
         }
     },
-    authorityDomain: "msidlabb2c.b2clogin.com"
+    authorityDomain: "karpalab2c.b2clogin.com"
 }
 
 // Config object to be passed to Msal on creation
 export const msalConfig = {
     auth: {
-        clientId: "e3b9ad76-9763-4827-b088-80c7a7888f79",
+        clientId: "bbf5a6af-7b39-4e2b-9a65-62ddfab69a38",
         authority: b2cPolicies.authorities.signUpSignIn.authority,
         knownAuthorities: [b2cPolicies.authorityDomain],
         redirectUri: "/",
@@ -76,7 +76,8 @@ export const msalConfig = {
 
 // Scopes you add here will be prompted for consent during login
 export const loginRequest = {
-    scopes: ["https://msidlabb2c.onmicrosoft.com/msidlabb2capi/read"]
+    scopes: []
+    // scopes: ["https://karpalab2c.onmicrosoft.com/46468dd1-926d-4681-ba9d-3a71fdb770c8/ActAsAUser"]
 };
 
 /**
@@ -84,6 +85,6 @@ export const loginRequest = {
  * The current application coordinates were pre-registered in a B2C tenant.
  */
 export const apiConfig = {
-    scopes: ['https://msidlabb2c.onmicrosoft.com/msidlabb2capi/read'],
-    uri: 'https://msidlabb2c.onmicrosoft.com/msidlabb2capi'
+    scopes: ['https://karpalab2c.onmicrosoft.com/46468dd1-926d-4681-ba9d-3a71fdb770c8/ActAsAUser'],
+    uri: 'https://karpalab2c.onmicrosoft.com/46468dd1-926d-4681-ba9d-3a71fdb770c8'
 };

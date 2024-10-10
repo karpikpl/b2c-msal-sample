@@ -287,3 +287,6 @@ junit.xml
 
 # ApiExtractor
 temp/
+
+# build directory
+build/
